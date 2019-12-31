@@ -11,5 +11,6 @@ function twoSum(nums, target) {
         }
     }
 }
-
-console.log('Solution:', twoSum([2, 7, 11, 15], 9));
+// array = [2, 7, 11, 15]
+array = [2, 11, 15, 7]
+console.log('Solution:', twoSum(array, 9));
