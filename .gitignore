@@ -1,2 +1,5 @@
 # vs code stuff
 .vscode
+
+# Binaries
+*.exe
