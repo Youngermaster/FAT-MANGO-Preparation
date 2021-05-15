@@ -5,6 +5,7 @@ using namespace std;
 int main()
 {
     int n, Petya, Vasya, Tonya, problemsToSolve(0);
+
     cin >> n;
     while (n--)
     {
