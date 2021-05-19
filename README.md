@@ -1,6 +1,7 @@
-# Google Intership Preparation
+# Internship Preparation
 
-This repo contains all my coding preparation to get into Google. 
+This repo contains all my coding preparation to get into FANMG industries and the *most important
+thing*, **Learn a lot to Improve my codes to Change the World**.
 
 ## Resume tips
 
