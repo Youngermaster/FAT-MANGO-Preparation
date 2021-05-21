@@ -1,7 +1,9 @@
 # Internship Preparation
 
-This repo contains all my coding preparation to get into FANMG industries and the *most important
+This repo contains all my coding preparation to get into FAANMG* industries and the *most important
 thing*, **Learn a lot to Improve my codes to Change the World**.
+
+    Note*: FAANMG -> Facebook, Amazon, Apple, Netflix, Microsoft, Google.
 
 ## Resume tips
 
