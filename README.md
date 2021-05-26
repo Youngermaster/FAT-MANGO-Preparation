@@ -1,9 +1,9 @@
-# Internship Preparation
+# FAT MANGO Preparation
 
-This repo contains all my coding preparation to get into *FAANMG** industries and the *most important
+This repo contains all my coding preparation to get into *FAT MANGO** industries and the *most important
 thing*, **Learn a lot to Improve my codes to Change the World**.
 
-    Note*: FAANMG -> Facebook, Amazon, Apple, Netflix, Microsoft, Google.
+    Note*: FAT MANGO -> Facebook, Amazon, Twitter, Microsoft, Apple, Netflix, Google, and Oracle.
 
 ## Resume tips
 
@@ -54,3 +54,8 @@ Focus on your impact!
 - Consider **relevant** experiences.
 
 #### "Accomplished [`X`], as measured by [`Y`], by doing [`Z`].
+
+## Name idea
+
+The name idea was inspired by:
+![NameIdea](GitHubAssets/NameIdea.png)
