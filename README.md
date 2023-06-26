@@ -1,59 +1,21 @@
 # FAT MANGO Preparation
 
 This repo contains all my coding preparation to get into *FAT MANGO** industries and the *most important
-thing*, **Learn a lot to Improve my codes to Change the World**.
+thing*, **Learn a lot to Improve my programming skills to be able to Change the World**.
 
     Note*: FAT MANGO -> Facebook, Amazon, Twitter, Microsoft, Apple, Netflix, Google, and Oracle.
 
-## Resume tips
+## Contest Problems
 
-Recruiters should be able to find pertinent info on your resume.
+These are some of the places where I solve problems, each one has a folder and
+subfolders for different programming languages and different approaches.
 
-- PDF format.
-- Clean, simple, consistent, bullet-pointed.
-- Action words + metrics = results + impacts.
-- Contact information.
-- "References upon request".
-
-## Resume structure
-
-1. Education.
-2. Work Experiences.
-3. Projects.
-4. Activities / Leadership.
-5. Honors / Awards.
-
-
-### Education
-
-Your education should be the first section on your resume.
-
-- Post-secondary school(s) attended.
-- Intended major / minor / degree.
-- Graduation **month** and **year**.
-- Grade Point Average.
-- Relevant Coursework*.
-- Technical Skills*.
-
-#### Education example
-
-    University of Eutopia              Inteded grad: May 2019
-    B.S. Computer Science              GPA: 4.1/5
-
-    Relevant Coursework: `Data Structures`, `Algorithms`, Machine Learning, Linear Algebra, Discrete Math, Artificial Intelligence, Probability Theory, Cryptography.
-
-    Technical skills: Java (4 years), Python (1 year), GitHub, MatLAB.
-
-
-### Work experiences
-
-Focus on your impact!
-
-- Include employer, position, dates employed.
-- Keep bullet points clear, consice, and descriptive.
-- Consider **relevant** experiences.
-
-#### "Accomplished [`X`], as measured by [`Y`], by doing [`Z`].
+```bash
+├── CodeForces
+├── FacebookCarrers
+├── GitHubAssets
+└── LeetCode
+```
 
 ## Name idea
 
