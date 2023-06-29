@@ -7,6 +7,14 @@ void solve() {
     int n, k, x;
     cin >> n >> k >> x;
 
+    // handle the case where k equals x and n is greater than k
+    if (k == x) {
+        if (n > k || n == x) {
+            cout << "NO" << endl;
+            return;
+        }
+    }
+
     vector<int> ans;
 
     for (int i = k; i >= 1; i--) {
