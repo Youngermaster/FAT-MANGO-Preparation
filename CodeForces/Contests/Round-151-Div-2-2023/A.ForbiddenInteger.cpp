@@ -9,10 +9,7 @@ void solve() {
 
     // handle the case where k equals x and n is greater than k
     if (k == x) {
-        if (n > k || n == x) {
-            cout << "NO" << endl;
-            return;
-        }
+        cout << "NO" << endl;
     }
 
     vector<int> ans;
