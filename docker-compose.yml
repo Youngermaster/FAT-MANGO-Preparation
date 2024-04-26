@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  cpp-compiler:
+    build: .
+    volumes:
+      - type: bind
+        source: /local/path/to/your/project # Change this to your project path
+        target: /usr/src/app
+    stdin_open: true
+    tty: true
