@@ -1,9 +1,8 @@
 # FAT MANGO Preparation
 
-This repo contains all my coding preparation to get into *FAT MANGO** industries and the *most important
-thing*, **Learn a lot to Improve my programming skills to be able to Change the World**.
+This repo contains all my coding preparation to get into **FAT MANGO** industries and the *most important thing*, **Learn a lot to Improve my programming skills to be able to Change the World**.
 
-    Note*: FAT MANGO -> Facebook, Amazon, Twitter, Microsoft, Apple, Netflix, Google, and Oracle.
+> Note*: FAT MANGO -> Facebook, Amazon, Twitter, Microsoft, Apple, Netflix, Google, and Oracle.
 
 ## Contest Problems
 
@@ -15,6 +14,7 @@ subfolders for different programming languages and different approaches.
 ├── FacebookCarrers
 ├── GitHubAssets
 └── LeetCode
+└── RandomCodes
 ```
 
 ## Name idea
