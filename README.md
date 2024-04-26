@@ -1,6 +1,6 @@
 # FAT MANGO Preparation
 
-This repo contains all my coding preparation to get into **FAT MANGO** industries and the _most important thing_, **Learn a lot to Improve my programming skills to be able to Change the World**.
+This repo contains all my coding preparation to get into **FAT MANGO** industries, also for the _ICPC_ competitions, _CodeForces_ contests, and the _most important thing_, **Learn a lot to Improve my programming skills to be able to Change the World**.
 
 > Note\*: FAT MANGO -> Facebook, Amazon, Twitter, Microsoft, Apple, Netflix, Google, and Oracle.
 
