@@ -26,11 +26,7 @@ typedef map<int, int> mpii;
 void solve() {
     int n, t;
     cin >> n >> t;
-    vl p(n);
-    vl np(n);
-    while (n--) {
-        cin >> a[n];
-    }
+
 }
 
 int main() {
