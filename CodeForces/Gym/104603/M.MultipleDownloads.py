@@ -18,40 +18,33 @@ np = [100, 300]
 # p = [355]
 # np = []
 
-store = 0
-
-
 while len(p) > 0 or len(np) > 0:
-  if len(p) == 0 or len(np) == 0:
-    for i in p:
-      store += i
-    for i in np:
-      store += i
-    output = store / t
-    break
-
-  # Priority download
-  dp = (t * 0.75) / len(p)
-  # Non-priority download
-  ndp = (t * 0.25) / len(np)
-
-  print(dp, ndp)
+  print("Output: ", output)
   print("Priority queue: ", p)
   print("Non-priority queue: ", np)
   for i in range(len(p)):
-    p[i] -= dp
+    if len(np) == 0:
+      p[i] -= t
+    else:
+      # Priority download
+      dp = (t * 0.75) / len(p)
+      print("Priority download: ", dp)
+      p[i] -= dp
     if p[i] <= 0:
-      store += dp
       p.pop(i)
       break
   for i in range(len(np)):
-    np[i] -= ndp
+    if len(p) == 0:
+      np[i] -= t
+    else:
+      # Non-priority download
+      ndp = (t * 0.25) / len(np)
+      print("Non-priority download: ", ndp)
+      np[i] -= ndp
     if np[i] <= 0:
-      store += ndp
       np.pop(i)
       break
+  output += 1
   
 
 print(output)
-
-
