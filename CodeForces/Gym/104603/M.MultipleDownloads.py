@@ -1,9 +1,9 @@
 output = 0
 # ! First Case
-n = 5
-t = 40
-p = [10, 20, 200]
-np = [100, 300]
+# n = 5
+# t = 40
+# p = [10, 20, 200]
+# np = [100, 300]
 
 # * Uncomment the following cases to test the code
 # # ! Second Case
@@ -13,10 +13,10 @@ np = [100, 300]
 # np = [64]
 
 # # ! Third Case
-# n = 1
-# t = 113
-# p = [355]
-# np = []
+n = 1
+t = 113
+p = [355]
+np = []
 
 offset_seconds = 0
 while len(p) > 0 or len(np) > 0:
