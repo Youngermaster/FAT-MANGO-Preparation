@@ -18,33 +18,44 @@ np = [100, 300]
 # p = [355]
 # np = []
 
+offset_seconds = 0
 while len(p) > 0 or len(np) > 0:
   print("Output: ", output)
   print("Priority queue: ", p)
   print("Non-priority queue: ", np)
+  pi_to_remove = []
+  npi_to_remove = []
   for i in range(len(p)):
     if len(np) == 0:
-      p[i] -= t
+      p[i] -= t / len(p)
     else:
       # Priority download
       dp = (t * 0.75) / len(p)
       print("Priority download: ", dp)
       p[i] -= dp
     if p[i] <= 0:
-      p.pop(i)
-      break
+      pi_to_remove.append(i)
+      if p[i] < 0:
+        offset_seconds += abs(p[i]/t)
+        print("Offset seconds: ", offset_seconds)
   for i in range(len(np)):
     if len(p) == 0:
-      np[i] -= t
+      np[i] -= t / len(np)
     else:
       # Non-priority download
       ndp = (t * 0.25) / len(np)
       print("Non-priority download: ", ndp)
       np[i] -= ndp
     if np[i] <= 0:
-      np.pop(i)
-      break
+      npi_to_remove.append(i)
+      if np[i] < 0:
+        offset_seconds += abs(np[i]/t)
+        print("Offset seconds: ", offset_seconds)
+  for i in pi_to_remove:
+    p.pop(i)
+  for i in npi_to_remove:
+    np.pop(i)
   output += 1
   
-
-print(output)
+print(offset_seconds)
+print(output-offset_seconds)
