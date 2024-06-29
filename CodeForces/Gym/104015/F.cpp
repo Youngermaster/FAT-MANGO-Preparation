@@ -32,6 +32,7 @@ vector<long long> get_factors(long long x) {
             }
         }
     }
+    sort(all(factors), greater<long long>());
     return factors;
 }
 
