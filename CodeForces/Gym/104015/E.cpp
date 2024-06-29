@@ -33,16 +33,16 @@ void solve() {
         total_sum += a[i];
     }
 
-    long long k = total_sum / n;
-    long long double_k = 2 * k;
+    long double k = total_sum / ((double)1.0 * n);
+    long double double_k = ((long double)2.0 * k);
 
     map<long long, int> freq;
     long long result = 0;
 
     for (int i = 0; i < n; ++i) {
-        long long complement = double_k - a[i];
+        long double complement = double_k - a[i];
 
-        if (freq.find(complement) != freq.end()) {
+        if (freq[complement]) {
             result += freq[complement];
         }
 
