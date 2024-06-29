@@ -40,32 +40,29 @@ void solve() {
     int n;
     cin >> n;
     vector<long long> a(n);
-    map<long long, int> power_count;
+    map<long long, long long> factor_count;
 
-    forn(i, n) {
-        int value;
-        cin >> value;
-        a[i] = value;
-    }
-
-    long long max_coconuts = 0;
-
-    sort(all(a), greater<long long>());
-
-    map<long long, vector<long long>> factors_map;
-
-    forn(i, n) {
-        factors_map[a[i]] = get_factors(a[i]);
-    }
-
-    forn(i, n) {
-        cout << "Factors of " << a[i] << ": ";
-        for (auto x : factors_map[a[i]]) {
-            cout << x << " ";
+    for (int i = 0; i < n; ++i) {
+        cin >> a[i];
+        vector<long long> factors = get_factors(a[i]);
+        for (long long factor : factors) {
+            if (a[i] == 1) {
+                factor_count[1] += 1;
+                continue;
+            }
+            factor_count[factor] += a[i];
         }
     }
 
-    cout << max_coconuts << el;
+    long long max_coconuts = 0;
+    for (auto& [factor, count] : factor_count) {
+        cout << "factor: " << factor << " count: " << count << el;
+        if (factor != 1) {
+            max_coconuts = max(max_coconuts, count);
+        }
+    }
+
+    cout << max_coconuts << endl;
 }
 
 int main() {
