@@ -23,22 +23,24 @@ typedef vector<int> vi;
 typedef long double ld;
 
 void solve() {
-    string s;
-    long long x;
+    int n;
+    vector<int> a;
 
-    cin >> s;
-    cin >> x;
-    int n = s.size();
+    cin >> n;
 
-    for (int len = 1; len <= n / 2; ++len) {
-        for (int i = 0; i + 2 * len <= n; ++i) {
-            long long a = stoll(s.substr(i, len));
-            long long b = stoll(s.substr(i + len, len));
-            if (a + b == x) {
-                cout << i + 1 << " " << i + len << endl;
-                cout << i + len + 1 << " " << i + 2 * len << endl;
-                return;
-            }
+    // Read the input values into the vector
+    forn(i, n) {
+        int value;
+        cin >> value;
+        a.pb(value);  // Use push_back to add values to the vector
+    }
+
+    // Iterate through the vector to check if the elements are even or odd
+    forn(i, n) {
+        if (a[i] % 2 == 0) {
+            cout << a[i] << " is even" << el;
+        } else {
+            cout << a[i] << " is odd" << el;
         }
     }
 }
