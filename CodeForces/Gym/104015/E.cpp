@@ -24,25 +24,32 @@ typedef long double ld;
 
 void solve() {
     int n;
-    vector<int> a;
-
     cin >> n;
+    vector<long long> a(n);
+    long long total_sum = 0;
 
-    // Read the input values into the vector
-    forn(i, n) {
-        int value;
-        cin >> value;
-        a.pb(value);  // Use push_back to add values to the vector
+    for (int i = 0; i < n; ++i) {
+        cin >> a[i];
+        total_sum += a[i];
     }
 
-    // Iterate through the vector to check if the elements are even or odd
-    forn(i, n) {
-        if (a[i] % 2 == 0) {
-            cout << a[i] << " is even" << el;
-        } else {
-            cout << a[i] << " is odd" << el;
+    long long k = total_sum / n;
+    long long double_k = 2 * k;
+
+    map<long long, int> freq;
+    long long result = 0;
+
+    for (int i = 0; i < n; ++i) {
+        long long complement = double_k - a[i];
+
+        if (freq.find(complement) != freq.end()) {
+            result += freq[complement];
         }
+
+        freq[a[i]]++;
     }
+
+    cout << result << endl;
 }
 
 int main() {
