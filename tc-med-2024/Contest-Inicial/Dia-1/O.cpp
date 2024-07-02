@@ -25,54 +25,42 @@ typedef long double ld;
 void solve() {
     int n;
     cin >> n;
-    vector<int> a(n);
-    int taxis_needed = 0;
+    vector<int> count(5, 0);
 
-    forn(i, n) { cin >> a[i]; }
+    for (int i = 0; i < n; ++i) {
+        int num;
+        cin >> num;
+        count[num]++;
+    }
 
-    sort(all(a));
+    int taxis = 0;
 
-    forn(i, n) {
-        if (a[i] == 4) {
-            taxis_needed++;
-        } else if (a[i] == 3) {
-            if (a[i + 1] == 1) {
-                taxis_needed++;
-                i++;
-            } else {
-                taxis_needed++;
-            }
-        } else if (a[i] == 2) {
-            if (a[i + 1] == 2) {
-                taxis_needed++;
-                i++;
-            } else if (a[i + 1] == 1) {
-                if (a[i + 2] == 1) {
-                    taxis_needed++;
-                    i += 2;
-                } else {
-                    taxis_needed++;
-                    i++;
-                }
-            } else {
-                taxis_needed++;
-            }
-        } else if (a[i] == 1) {
-            if (a[i + 1] == 1) {
-                if (a[i + 2] == 1) {
-                    taxis_needed++;
-                    i += 2;
-                } else {
-                    taxis_needed++;
-                    i++;
-                }
-            } else {
-                taxis_needed++;
-            }
+    taxis += count[4];
+
+    int min_three_one = min(count[3], count[1]);
+    taxis += min_three_one;
+    count[3] -= min_three_one;
+    count[1] -= min_three_one;
+
+    taxis += count[3];
+
+    taxis += count[2] / 2;
+    count[2] %= 2;
+
+    if (count[2] == 1) {
+        if (count[1] >= 2) {
+            taxis++;
+            count[1] -= 2;
+        } else {
+            taxis++;
+            count[1] = 0;
         }
     }
 
-    cout << taxis_needed << el;
+    taxis += count[1] / 4;
+    if (count[1] % 4 != 0) taxis++;
+
+    cout << taxis << endl;
 }
 
 int main() {
