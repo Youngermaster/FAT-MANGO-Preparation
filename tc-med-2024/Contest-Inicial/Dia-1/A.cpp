@@ -26,40 +26,17 @@ void solve() {
     int n;
     cin >> n;
 
-    if (n <= 3) {
-        cout << "NO SOLUTION" << el;
+    if (n == 2 || n == 3) {
+        cout << "NO SOLUTION" << endl;
         return;
     }
 
-    vector<int> a(n);
-    for (int i = 0; i < n; ++i) {
-        a[i] = i + 1;
+    for (int i = n; i > 0; i--) {
+        if (i % 2 == 0) cout << i << " ";
     }
 
-    int i, j, k, l, aux;
-    i = a.size() / 2 - 1;
-    j = a.size() / 2;
-    k = 0;
-    l = a.size() - 1;
-    for (i = a.size() / 2 - 1; i >= 0; --i) {
-        aux = a[i];
-        a[i] = a[k];
-        a[k] = aux;
-        k++;
-
-        aux = a[j];
-        a[j] = a[l];
-        a[l] = aux;
-        l--;
-        j++;
-
-        if (k == a.size() / 2 - 1) {
-            break;
-        }
-    }
-
-    for (int i = 0; i < n; ++i) {
-        cout << a[i] << " ";
+    for (int i = n; i > 0; i--) {
+        if (i % 2 != 0) cout << i << " ";
     }
 }
 
