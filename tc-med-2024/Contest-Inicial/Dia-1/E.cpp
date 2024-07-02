@@ -29,7 +29,6 @@ void solve() {
     string a;
     cin >> a;
     int possible_phone_numbers = n / 11;
-    double result = 0;
 
     forn(i, n) {
         if (a[i] == '8') {
@@ -37,10 +36,11 @@ void solve() {
         }
     }
 
-    result = (possible_phone_numbers + eight_count) / 2;
-    result = static_cast<int>(result);
-
-    cout << result << el;
+    if (eight_count == 0) {
+        cout << 0 << el;
+    } else {
+        cout << min(possible_phone_numbers, eight_count) << el;
+    }
 }
 
 int main() {
