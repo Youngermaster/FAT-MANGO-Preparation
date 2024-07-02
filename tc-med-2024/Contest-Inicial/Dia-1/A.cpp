@@ -23,7 +23,7 @@ typedef vector<int> vi;
 typedef long double ld;
 
 void solve() {
-    int n;
+    long n;
     cin >> n;
 
     if (n == 2 || n == 3) {
@@ -31,11 +31,11 @@ void solve() {
         return;
     }
 
-    for (int i = n; i > 0; i--) {
+    for (long i = n; i > 0; i--) {
         if (i % 2 == 0) cout << i << " ";
     }
 
-    for (int i = n; i > 0; i--) {
+    for (long i = n; i > 0; i--) {
         if (i % 2 != 0) cout << i << " ";
     }
 }
