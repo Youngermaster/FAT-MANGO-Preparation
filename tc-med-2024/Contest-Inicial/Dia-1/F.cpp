@@ -23,23 +23,52 @@ typedef vector<int> vi;
 typedef long double ld;
 
 void solve() {
-    int n;
-    cin >> n;
-    vector<long long> a(n);
+    string players;
+    bool is_dangerous = false;
+    bool is_one = false;
+    bool is_zero = false;
+    int number_of_players = 0;
 
-    for (int i = 0; i < n; i++) {
-        cin >> a[i];
-    }
+    cin >> players;
 
-    long long moves = 0;
-    for (int i = 1; i < n; i++) {
-        if (a[i] < a[i - 1]) {
-            moves += (a[i - 1] - a[i]);
-            a[i] = a[i - 1];
+    for (int i = 0; i < players.size() - 2; i++) {
+        if (number_of_players >= 7) {
+            is_dangerous = true;
+            break;
+        }
+
+        if (players[i] == 1) {
+            is_one = true;
+        } else if (players[i] == 0) {
+            is_zero = true;
+        }
+
+        if (is_one && players[i + 1] == 1) {
+            number_of_players++;
+            continue;
+        } else if (is_one && players[i + 1] == 0) {
+            number_of_players = 0;
+            continue;
+        }
+
+        if (is_zero && players[i + 1] == 0) {
+            number_of_players++;
+            continue;
+        } else if (is_zero && players[i + 1] == 1) {
+            number_of_players = 0;
+            continue;
         }
     }
 
-    cout << moves << endl;
+    if (number_of_players >= 7) {
+        is_dangerous = true;
+    }
+
+    if (is_dangerous) {
+        cout << "YES" << el;
+    } else {
+        cout << "NO" << el;
+    }
 }
 
 int main() {
