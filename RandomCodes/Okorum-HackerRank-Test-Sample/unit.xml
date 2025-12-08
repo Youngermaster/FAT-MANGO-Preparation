@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="0.490" tests="4" failures="0">
+  <testsuite name="Root Suite" timestamp="2025-12-08T01:29:03" tests="0" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="async-search" timestamp="2025-12-08T01:29:03" tests="4" file="/Users/youngermaster/GitHub/Youngermaster/FAT-MANGO-Preparation/RandomCodes/Okorum-HackerRank-Test-Sample/test/index.spec.js" time="0.489" failures="0">
+    <testcase name="async-search Should emit the event SEARCH_STARTED when the search starts" time="0.021" classname="Should emit the event SEARCH_STARTED when the search starts">
+    </testcase>
+    <testcase name="async-search Should emit the event SEARCH_ERROR if term passed to the function is falsy" time="0.152" classname="Should emit the event SEARCH_ERROR if term passed to the function is falsy">
+    </testcase>
+    <testcase name="async-search Should emit the event SEARCH_ERROR if the API service fails with an error" time="0.155" classname="Should emit the event SEARCH_ERROR if the API service fails with an error">
+    </testcase>
+    <testcase name="async-search Should emit the event SEARCH_SUCCESS with the result" time="0.154" classname="Should emit the event SEARCH_SUCCESS with the result">
+    </testcase>
+  </testsuite>
+</testsuites>
