@@ -13,6 +13,7 @@ those missed ticks are timed-out requests, failed liveness probes, and a pod bei
 from __future__ import annotations
 
 import asyncio
+import contextlib
 import time
 from dataclasses import dataclass, field
 
@@ -38,13 +39,11 @@ class Heartbeat:
     async def __aexit__(self, *exc_info: object) -> None:
         assert self._task is not None
         self._task.cancel()
-        # A cancelled task raises CancelledError when awaited. Swallow it here -- we asked for
+        # A cancelled task raises CancelledError when awaited. Suppress it here -- we asked for
         # the cancellation, so it is not an error. Note we still await: dropping a cancelled
         # task without awaiting it is how "Task exception was never retrieved" warnings appear.
-        try:
+        with contextlib.suppress(asyncio.CancelledError):
             await self._task
-        except asyncio.CancelledError:
-            pass
 
     def expected(self, elapsed: float) -> int:
         return int(elapsed / self.interval)
@@ -82,9 +81,7 @@ async def measure(label: str, body: object) -> None:
 
     expected = hb.expected(elapsed)
     health = "OK" if hb.ticks >= expected * 0.7 else "LOOP BLOCKED"
-    print(
-        f"{label:<46} {elapsed:5.2f}s  ticks {hb.ticks:>3}/{expected:<3} {health}"
-    )
+    print(f"{label:<46} {elapsed:5.2f}s  ticks {hb.ticks:>3}/{expected:<3} {health}")
 
 
 async def main() -> None:

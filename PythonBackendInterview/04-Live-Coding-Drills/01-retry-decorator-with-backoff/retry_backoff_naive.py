@@ -20,7 +20,9 @@ def retry(max_attempts=3, delay=1):
                 except Exception as e:  # noqa: F841
                     print(f"attempt {attempt} failed: {e}")
                     time.sleep(delay)
+
         return wrapper
+
     return decorator
 
 

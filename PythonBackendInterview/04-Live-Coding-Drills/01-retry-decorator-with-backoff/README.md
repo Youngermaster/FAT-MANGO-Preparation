@@ -69,7 +69,7 @@ for attempt in range(1, max_attempts + 1):
         return func(*args, **kwargs)
     except exceptions as exc:
         if attempt == max_attempts:
-            raise          # <-- this line is the whole exercise
+            raise  # <-- this line is the whole exercise
         ...
         time.sleep(delay)
 ```
@@ -154,8 +154,10 @@ Detect a single callable positional argument:
 ```python
 def retry(func=None, /, **kw):
     if func is not None:
-        return retry(**kw)(func)   # used bare as @retry
+        return retry(**kw)(func)  # used bare as @retry
+
     def decorator(f): ...
+
     return decorator
 ```
 

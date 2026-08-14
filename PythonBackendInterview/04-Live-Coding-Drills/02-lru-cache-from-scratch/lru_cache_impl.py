@@ -202,11 +202,13 @@ if __name__ == "__main__":
         cache.put("a", 1)
         cache.put("b", 2)
         cache.put("c", 3)
-        cache.get("a")            # touch 'a', so 'b' is now the coldest
-        cache.put("d", 4)         # evicts 'b'
+        cache.get("a")  # touch 'a', so 'b' is now the coldest
+        cache.put("d", 4)  # evicts 'b'
 
-        print(f"{name:>12}: MRU-first {cache.keys_mru_first()}  "
-              f"'b' evicted: {'b' not in cache}  hits={cache.hits} misses={cache.misses}")
+        print(
+            f"{name:>12}: MRU-first {cache.keys_mru_first()}  "
+            f"'b' evicted: {'b' not in cache}  hits={cache.hits} misses={cache.misses}"
+        )
 
     # Both orderings agree, which is the point: the OrderedDict version is the same algorithm
     # with the linked list hidden inside the C implementation.

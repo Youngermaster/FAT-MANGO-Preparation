@@ -10,7 +10,7 @@ import asyncio
 import time
 
 import pytest
-from blocking_the_loop import Heartbeat, blocking_io, cpu_bound
+from blocking_the_loop import Heartbeat
 
 pytestmark = pytest.mark.slow
 

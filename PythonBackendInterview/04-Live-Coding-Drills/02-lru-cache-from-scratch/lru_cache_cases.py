@@ -38,7 +38,7 @@ def case_get_refreshes_recency(cache_cls: Any) -> None:
     c = cache_cls(2)
     c.put("a", 1)
     c.put("b", 2)
-    c.get("a")     # 'a' is now newest, 'b' is coldest
+    c.get("a")  # 'a' is now newest, 'b' is coldest
     c.put("c", 3)  # so 'b' is evicted, NOT 'a'
     assert "b" not in c
     assert c.get("a") == 1

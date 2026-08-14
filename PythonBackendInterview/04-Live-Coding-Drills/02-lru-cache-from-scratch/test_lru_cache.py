@@ -12,7 +12,9 @@ from practice_lru_cache import LRUCache as PracticeLRUCache
 _ids = lambda c: c.__name__[len("case_") :]  # noqa: E731
 
 
-@pytest.mark.parametrize("cache_cls", [LRUCache, LRUCacheOrderedDict], ids=["linkedlist", "ordereddict"])
+@pytest.mark.parametrize(
+    "cache_cls", [LRUCache, LRUCacheOrderedDict], ids=["linkedlist", "ordereddict"]
+)
 @pytest.mark.parametrize("case", spec.CASES, ids=_ids)
 def test_solution(case: Any, cache_cls: Any) -> None:
     case(cache_cls)

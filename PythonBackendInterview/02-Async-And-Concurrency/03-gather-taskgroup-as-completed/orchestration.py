@@ -102,8 +102,10 @@ async def demo_taskgroup_cancels_siblings() -> None:
     except* ValueError as eg:
         # `except*` unpacks an ExceptionGroup. Multiple children can fail simultaneously, so
         # the group carries ALL of them -- something plain `gather` cannot express.
-        print(f"  TaskGroup raised ExceptionGroup with {len(eg.exceptions)} error(s): "
-              f"{[str(e) for e in eg.exceptions]}")
+        print(
+            f"  TaskGroup raised ExceptionGroup with {len(eg.exceptions)} error(s): "
+            f"{[str(e) for e in eg.exceptions]}"
+        )
 
     await asyncio.sleep(0.25)
     print(f"  'slow' was cancelled, so it never completed: completed={completed}")
@@ -217,7 +219,7 @@ async def demo_unreferenced_task_can_vanish() -> None:
 
     reset()
     task = asyncio.create_task(fire_and_forget())
-    background.add(task)                       # strong reference
+    background.add(task)  # strong reference
     task.add_done_callback(background.discard)  # and release it when finished
     await asyncio.sleep(0.05)
     print(f"  background task survived: completed={completed}, set drained: {not background}")
@@ -225,14 +227,20 @@ async def demo_unreferenced_task_can_vanish() -> None:
 
 async def main() -> None:
     sections = [
-        ("gather: first error propagates, siblings keep running", demo_gather_propagates_first_error),
+        (
+            "gather: first error propagates, siblings keep running",
+            demo_gather_propagates_first_error,
+        ),
         ("gather(return_exceptions=True): collect everything", demo_gather_return_exceptions),
         ("TaskGroup: sibling cancellation + ExceptionGroup", demo_taskgroup_cancels_siblings),
         ("TaskGroup: multiple simultaneous failures", demo_taskgroup_collects_multiple_failures),
         ("TaskGroup: getting results out", demo_taskgroup_results),
         ("as_completed: arrival order", demo_as_completed),
         ("as_completed: first good answer wins", demo_as_completed_early_exit),
-        ("wait(FIRST_COMPLETED): you must cancel pending yourself", demo_wait_leaves_pending_tasks_running),
+        (
+            "wait(FIRST_COMPLETED): you must cancel pending yourself",
+            demo_wait_leaves_pending_tasks_running,
+        ),
         ("create_task: keep a reference or it may vanish", demo_unreferenced_task_can_vanish),
     ]
     for title, demo in sections:

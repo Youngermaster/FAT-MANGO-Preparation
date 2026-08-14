@@ -99,7 +99,7 @@ live. Sentinels delete the bugs instead of handling them.
 def _evict(self):
     lru = self._tail.prev
     self._unlink(lru)
-    del self._map[lru.key]   # <-- the line people forget
+    del self._map[lru.key]  # <-- the line people forget
 ```
 
 Unlink from the list but leave the key in the dict, and the cache reports evicted keys as present,

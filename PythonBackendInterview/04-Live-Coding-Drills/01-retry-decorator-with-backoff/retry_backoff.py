@@ -115,7 +115,11 @@ def retry(
                             on_retry(attempt, exc, delay)
                         logger.warning(
                             "%s failed (attempt %d/%d): %r -- retrying in %.3fs",
-                            func.__qualname__, attempt, max_attempts, exc, delay,
+                            func.__qualname__,
+                            attempt,
+                            max_attempts,
+                            exc,
+                            delay,
                         )
                         # `asyncio.sleep` yields to the event loop. `time.sleep` here would
                         # block every other coroutine in the process for the duration -- the
@@ -138,7 +142,11 @@ def retry(
                         on_retry(attempt, exc, delay)
                     logger.warning(
                         "%s failed (attempt %d/%d): %r -- retrying in %.3fs",
-                        func.__qualname__, attempt, max_attempts, exc, delay,
+                        func.__qualname__,
+                        attempt,
+                        max_attempts,
+                        exc,
+                        delay,
                     )
                     time.sleep(delay)
             raise AssertionError("unreachable")  # pragma: no cover

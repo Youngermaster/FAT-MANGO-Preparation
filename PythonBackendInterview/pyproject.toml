@@ -69,6 +69,12 @@ ignore = [
     # so only the rules that fight the *teaching* format are disabled here.
     "E501",  # long explanatory comments are the point
     "B008",  # FastAPI's Depends() in defaults is idiomatic, not a bug
+    # UP046/UP047 want PEP 695 syntax (`class LRUCache[K, V]:`, new in 3.12). That syntax is
+    # genuinely nicer and worth knowing -- see 01-Python-Core/10-typing-and-protocols -- but the
+    # exercises use the classic TypeVar/Generic form because that is what you will see in an
+    # interview, in most codebases, and in any project still supporting 3.11.
+    "UP046",
+    "UP047",
 ]
 
 [tool.ruff.lint.per-file-ignores]
