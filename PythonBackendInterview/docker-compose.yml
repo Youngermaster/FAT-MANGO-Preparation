@@ -1,0 +1,35 @@
+# MongoDB for the 06-MongoDB-And-Beanie exercises.
+#
+# It runs as a SINGLE-NODE REPLICA SET rather than a standalone server. That is not decoration:
+# MongoDB refuses multi-document transactions on a standalone node, so without `--replSet` the
+# transaction exercises cannot run at all. Being able to explain that in an interview is worth
+# more than the exercise itself.
+#
+#   docker compose up -d          # start
+#   docker compose logs -f mongo  # watch the replica set initialise
+#   docker compose down -v        # stop and delete the data volume
+
+services:
+  mongo:
+    image: mongo:8
+    container_name: interview-mongo
+    command: ["mongod", "--replSet", "rs0", "--bind_ip_all"]
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    healthcheck:
+      # `rs.status()` errors until the set is initiated, so initiate it from inside the
+      # healthcheck. This is idempotent: once initiated, the first branch short-circuits.
+      test: >
+        mongosh --quiet --eval "
+          try { rs.status().ok }
+          catch (e) { rs.initiate({_id: 'rs0', members: [{_id: 0, host: 'localhost:27017'}]}).ok }
+        "
+      interval: 5s
+      timeout: 10s
+      retries: 12
+      start_period: 10s
+
+volumes:
+  mongo-data:

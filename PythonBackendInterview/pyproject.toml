@@ -1,0 +1,78 @@
+[project]
+name = "python-backend-interview"
+version = "0.1.0"
+description = "Senior Python backend interview preparation: runnable, explained exercises."
+readme = "README.md"
+# Beanie 2.x supports 3.10-3.13 (not 3.14 yet), so 3.13 is the newest interpreter
+# that runs every exercise in this repo.
+requires-python = ">=3.13,<3.14"
+
+dependencies = [
+    # --- Web framework ---
+    "fastapi>=0.141",
+    "uvicorn[standard]>=0.34",
+    "pydantic>=2.13",
+    "pydantic-settings>=2.7",
+    # --- MongoDB ---
+    # NOTE: `motor` is deliberately absent. It was deprecated on 2026-05-14 in favour of
+    # `pymongo.AsyncMongoClient`, and Beanie 2.0 dropped it. See 06-MongoDB-And-Beanie/.
+    "beanie>=2.2",
+    "pymongo>=4.15",
+    # --- Auth ---
+    # `pyjwt` over `python-jose`, and `argon2-cffi` over `passlib`: both of the alternatives
+    # have maintenance/CVE concerns as of 2026. See 07-Auth-Security/.
+    "pyjwt[crypto]>=2.10",
+    "argon2-cffi>=25.1",
+    # --- HTTP client (also the FastAPI test client) ---
+    "httpx>=0.28",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.4",
+    "pytest-asyncio>=1.4",
+    "anyio>=4.7",
+    # Runs FastAPI lifespan events under httpx.AsyncClient, which ASGITransport does not do.
+    "asgi-lifespan>=2.1",
+    "ruff>=0.14",
+]
+
+[tool.pytest.ini_options]
+# `auto` mode means bare `async def test_*` functions are collected without needing
+# @pytest.mark.asyncio on every one of them.
+asyncio_mode = "auto"
+testpaths = ["."]
+# Default ("prepend") import mode puts each test file's own directory on sys.path, which is
+# what lets `test_retry_backoff.py` do `from retry_backoff import retry`. The consequence is
+# that module basenames must be unique across the whole tree -- two files both named
+# `solution.py` would collide in sys.modules and the second one would silently resolve to the
+# first. That is why every exercise module is named after its topic instead of `solution.py`.
+#
+# `-m "not practice"` keeps a fresh checkout green: the practice stubs raise NotImplementedError
+# by design. Run them on purpose with `uv run pytest -m practice`.
+addopts = '-q --strict-markers -m "not practice"'
+markers = [
+    "mongo: requires a running MongoDB (docker compose up -d). Auto-skipped when absent.",
+    "slow: takes more than a second, usually because it really sleeps.",
+    "practice: runs the same suite against your from-scratch stub instead of the solution.",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "C4"]
+ignore = [
+    # Exercise files intentionally demonstrate anti-patterns (mutable defaults, bare excepts,
+    # blocking calls in coroutines). Those are annotated in place rather than silenced globally,
+    # so only the rules that fight the *teaching* format are disabled here.
+    "E501",  # long explanatory comments are the point
+    "B008",  # FastAPI's Depends() in defaults is idiomatic, not a bug
+]
+
+[tool.ruff.lint.per-file-ignores]
+# The "what's wrong with this snippet?" material must keep its bugs intact.
+"**/*_naive.py" = ["B", "SIM", "F", "E", "UP", "C4"]
+"00-Interview-Playbook/**" = ["B", "SIM", "F", "E", "UP", "C4"]
+"**/practice_*.py" = ["F", "B"]
